@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>OTTPointStore - Product</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            color: #222;
+        }
+
+        header {
+            background: #111;
+            color: white;
+            padding: 15px 35px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        nav {
+            margin-left: auto;
+            display: flex;
+            gap: 22px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .product-section {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .product-box {
+            background: white;
+            border-radius: 14px;
+            padding: 30px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .product-photo {
+            width: 100%;
+            height: 300px;
+            background: #eee;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            overflow: hidden;
+        }
+
+        .product-photo img {
+            width: 100%;
+            max-width: 220px;
+            height: 260px;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+
+        .rating {
+            color: #f5a623;
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .views {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 26px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .description {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .features {
+            margin: 20px 0;
+            line-height: 2;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #ff3b30;
+            color: white;
+            padding: 13px 22px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            margin-right: 8px;
+        }
+
+        .buy {
+            background: #111;
+        }
+
+        .support {
+            display: block;
+            margin-top: 18px;
+            color: #25D366;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 15px 20px;
+            }
+
+            nav {
+                gap: 10px;
+            }
+
+            .product-section {
+                margin: 20px auto;
+                padding: 12px;
+            }
+
+            .product-box {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+
+            .product-photo {
+                height: 220px;
+            }
+
+            .product-photo img {
+                max-width: 180px;
+                height: 190px;
+            }
+
+            .button {
+                margin-bottom: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">OTTPointStore</div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="cart.html">🛒 Cart</a>
+        </nav>
+    </header>
+
+    <section class="product-section">
+
+        <div class="product-box">
+
+            <div class="product-photo">
+                <img id="productImage" src="" alt="Product">
+            </div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="views" id="productViews"></div>
+
+            <h1 id="productName"></h1>
+
+            <p class="description" id="productDescription"></p>
+
+            <div class="features">
+                <strong>Features:</strong>
+                <div id="productFeatures"></div>
+            </div>
+
+            <div id="optionsArea"></div>
+
+            <div class="price" id="productPrice"></div>
+
+            <button class="button" onclick="addToCart()">
+                Add to Cart
+            </button>
+
+            <button class="button buy" onclick="buyNow()">
+                Buy Now
+            </button>
+
+            <a href="https://wa.me/91XXXXXXXXXX" class="support">
+                💬 Talk to Chat Support
+            </a>
+
+        </div>
+
+    </section>
+
+    <footer>
+        <p>© 2026 OTTPointStore. All rights reserved.</p>
+    </footer>
+
+    <script>
+
+        const products = {
+
+            P001: {
+                name: "Hoichoi On Your Number",
+                image: "product-images/P001-hoichoi.jpeg",
+                views: "120",
+                description: "Enjoy Hoichoi entertainment with a convenient subscription plan.",
+                features: [
+                    "Ad-Free Streaming",
+                    "Access to Exclusive Content",
+                    "Offline Viewing",
+                    "5 Device Access",
+                    "Early Access or Exclusive Releases",
+                    "Priority Customer Support"
+                ],
+                options: [
+                    ["duration", "Select Plan Duration", ["1 Month", "3 Months"]]
+                ],
+                price: "₹89–₹199",
+                basePrice: "89"
+            },
+
+            P002: {
+                name: "Disney+ Hotstar",
+                image: "product-images/P002-disney-hotstar.jpeg",
+                views: "98",
+                description: "Enjoy Disney+ Hotstar entertainment with flexible subscription options.",
+                features: [
+                    "Full HD",
+                    "Super Plan",
+                    "TV Supported",
+                    "Replacement Support"
+                ],
+                options: [
+                    ["duration", "Select Month", ["1 Month", "3 Months"]],
+                    ["screen", "Select Screen", ["1 Screen", "2 Screens"]],
+                    ["number", "Select Number", ["On Number"]]
+                ],
+                price: "₹69–₹149",
+                basePrice: "69"
+            },
+
+            P003: {
+                name: "Netflix + Prime Private Profile 14 Days 4K Combo",
+                image: "product-images/P003-netflix-prime-14days-combo.jpeg",
+                views: "156",
+                description: "Netflix and Prime Video combo with 4K UHD entertainment.",
+                features: [
+                    "Netflix + Prime Video",
+                    "4K UHD",
+                    "TV / Android / Laptop / iPhone",
+                    "1 Device",
+                    "14 Days"
+                ],
+                options: [
+                    ["duration", "Validity", ["14 Days"]]
+                ],
+                price: "₹129",
+                basePrice: "129"
+            },
+
+            P004: {
+                name: "Netflix + Prime Subscription 4K Combo",
+                image: "product-images/P004-netflix-prime-4k-combo.jpeg",
+                views: "143",
+                description: "Netflix and Prime Video 4K entertainment combo.",
+                features: [
+                    "Netflix Account",
+                    "Prime Video",
+                    "4K UHD",
+                    "TV / Android / Laptop / iPhone",
+                    "Replacement Support"
+                ],
+                options: [
+                    ["duration", "Select Plan", ["Subscription"]]
+                ],
+                price: "₹169",
+                basePrice: "169"
+            },
+
+            P005: {
+                name: "Netflix 1 Month – Private Profile With Pin 4K Plan",
+                image: "product-images/P005-netflix-private-profile-28days - .jpeg",
+                views: "187",
+                description: "Netflix private profile plan with PIN protection and 4K UHD.",
+                features: [
+                    "Netflix Account",
+                    "1 Private Profile",
+                    "PIN Protected",
+                    "No Logout Issue",
+                    "Instant Reply",
+                    "Validity 28 Days",
+                    "4K UHD",
+                    "TV / Android / Laptop / iPhone"
+                ],
+                options: [
+                    ["duration", "Validity", ["28 Days"]]
+                ],
+                price: "₹169",
+                basePrice: "169"
+            },
+
+            P006: {
+                name: "Netflix Premium",
+                image: "product-images/P006-netflix-premium.jpeg",
+                views: "174",
+                description: "Netflix Premium plan with 4K UHD entertainment.",
+                features: [
+                    "Netflix Account",
+                    "4K UHD",
+                    "TV / Android / Laptop / iPhone",
+                    "Replacement Support"
+                ],
+                options: [
+                    ["duration", "Select Month", ["1 Month", "3 Months", "6 Months"]],
+                    ["screen", "Select Screen", ["1 Screen", "2 Screens"]]
+                ],
+                price: "₹129–₹1,249",
+                basePrice: "129"
+            },
+
+            P007: {
+                name: "Netflix Premium Private Profile 14 Days",
+                image: "product-images/P007-netflix-private-profile-14days.jpeg",
+                views: "165",
+                description: "Netflix Premium private profile plan with 14-day validity.",
+                features: [
+                    "Netflix Account",
+                    "4K UHD",
+                    "TV / Android / Laptop / iPhone",
+                    "Replacement Support",
+                    "14 Days"
+                ],
+                options: [
+                    ["duration", "Validity", ["14 Days"]]
+                ],
+                price: "₹99",
+                basePrice: "99"
+            },
+
+            P008: {
+                name: "Prime Video On Your Mail 4 Device",
+                image: "product-images/P008-prime-video-4device.jpeg",
+                views: "132",
+                description: "Prime Video plan with multiple device access.",
+                features: [
+                    "Prime Video Premium",
+                    "4K",
+                    "4 Device Access",
+                    "Replacement Support"
+                ],
+                options: [
+                    ["duration", "Select Month", ["1 Month", "6 Months"]]
+                ],
+                price: "₹99–₹369",
+                basePrice: "99"
+            },
+
+            P009: {
+                name: "Sony LIV",
+                image: "product-images/P009-sony-liv.jpeg",
+                views: "118",
+                description: "Sony LIV entertainment subscription.",
+                features: [
+                    "Sony LIV Account",
+                    "4K",
+                    "TV / Laptop / Mobile / PC",
+                    "5 Screen",
+                    "Replacement Support"
+                ],
+                options: [
+                    ["duration", "Select Plan", ["1 Month", "1 Year"]],
+                    ["screen", "Select Screen", ["5 Screens"]]
+                ],
+                price: "₹99–₹449",
+                basePrice: "99"
+            },
+
+            P010: {
+                name: "Spotify Premium 2 Month On Mail",
+                image: "product-images/P010-spotify-premium-2month.jpeg",
+                views: "121",
+                description: "Enjoy premium music and podcasts with an ad-free listening experience.",
+                features: [
+                    "Ad-Free Listening",
+                    "Offline Listening",
+                    "High-Quality Audio",
+                    "Unlimited Skips",
+                    "Play Any Song",
+                    "Lyrics",
+                    "2 Months"
+                ],
+                options: [
+                    ["duration", "Validity", ["2 Months"]]
+                ],
+                price: "₹109",
+                basePrice: "109"
+            },
+
+            P011: {
+                name: "YouTube Premium",
+                image: "product-images/P011-youtube-premium.jpeg",
+                views: "146",
+                description: "Enjoy YouTube Premium with an enhanced viewing experience.",
+                features: [
+                    "YouTube Premium",
+                    "4K",
+                    "TV / Android / Laptop / iPhone",
+                    "Replacement Support",
+                    "Customer Mail"
+                ],
+                options: [
+                    ["duration", "Select Month", ["1 Month", "3 Months"]]
+                ],
+                price: "₹79–₹189",
+                basePrice: "79"
+            },
+
+            P012: {
+                name: "Zee 5",
+                image: "product-images/P012-zee5.jpeg",
+                views: "109",
+                description: "Enjoy ZEE5 entertainment with available subscription plans.",
+                features: [
+                    "ZEE5 Account",
+                    "Full HD",
+                    "TV Supported",
+                    "Replacement Support"
+                ],
+                options: [
+                    ["duration", "Select Plan", ["1 Year"]]
+                ],
+                price: "₹399",
+                basePrice: "399"
+            }
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        const productId = params.get("product") || "P001";
+        const product = products[productId] || products.P001;
+
+        document.title = product.name + " - OTTPointStore";
+
+        document.getElementById("productImage").src = product.image;
+        document.getElementById("productImage").alt = product.name;
+        document.getElementById("productViews").innerHTML =
+            "👁️ " + product.views + " people viewing";
+
+        document.getElementById("productName").textContent = product.name;
+        document.getElementById("productDescription").textContent =
+            product.description;
+        document.getElementById("productPrice").textContent =
+            product.price;
+
+        document.getElementById("productFeatures").innerHTML =
+            product.features.map(feature => "✓ " + feature + "<br>").join("");
+
+        const optionsArea = document.getElementById("optionsArea");
+
+        product.options.forEach(option => {
+
+            const select = document.createElement("select");
+            select.id = option[0];
+
+            const label = document.createElement("label");
+            label.innerHTML = "<strong>" + option[1] + "</strong>";
+
+            const defaultOption = document.createElement("option");
+            defaultOption.value = "";
+            defaultOption.textContent = "Choose an option";
+            select.appendChild(defaultOption);
+
+            option[2].forEach(value => {
+                const item = document.createElement("option");
+                item.value = value;
+                item.textContent = value;
+                select.appendChild(item);
+            });
+
+            optionsArea.appendChild(label);
+            optionsArea.appendChild(select);
+        });
+
+        function getSelectedOptions() {
+
+            const selected = [];
+
+            product.options.forEach(option => {
+
+                const element = document.getElementById(option[0]);
+
+                if (element && !element.value) {
+                    alert("Please select " + option[1] + ".");
+                    throw new Error("Option not selected");
+                }
+
+                if (element) {
+                    selected.push(element.value);
+                }
+            });
+
+            return selected;
+        }
+
+        function addToCart() {
+
+            try {
+
+                const selected = getSelectedOptions();
+
+                localStorage.setItem(
+                    "cartProduct",
+                    product.name + " - " + selected.join(" / ")
+                );
+
+                localStorage.setItem(
+                    "cartPrice",
+                    product.basePrice
+                );
+
+                window.location.href = "cart.html";
+
+            } catch (error) {
+                return;
+            }
+        }
+
+        function buyNow() {
+
+            try {
+
+                const selected = getSelectedOptions();
+
+                localStorage.setItem(
+                    "cartProduct",
+                    product.name + " - " + selected.join(" / ")
+                );
+
+                localStorage.setItem(
+                    "cartPrice",
+                    product.basePrice
+                );
+
+                window.location.href = "checkout.html";
+
+            } catch (error) {
+                return;
+            }
+        }
+
+    </script>
+
+</body>
+</html>

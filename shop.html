@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shop - OTTPointStore</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            color: #222;
+        }
+
+        header {
+            background: #111;
+            color: white;
+            padding: 15px 35px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        nav {
+            margin-left: auto;
+            display: flex;
+            gap: 22px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #ff3b30;
+        }
+
+        .shop-header {
+            background: white;
+            text-align: center;
+            padding: 50px 20px 35px;
+        }
+
+        .shop-header p {
+            color: #ff3b30;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .shop-header h1 {
+            font-size: 40px;
+        }
+
+        .products {
+            max-width: 1200px;
+            margin: auto;
+            padding: 40px 20px 70px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .product-image {
+            height: 210px;
+            background: #eee;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #777;
+            margin-bottom: 18px;
+        }
+
+        .rating {
+            color: #f5a623;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .views {
+            color: #777;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .product-card h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .description {
+            color: #666;
+            line-height: 1.5;
+            font-size: 14px;
+            min-height: 65px;
+        }
+
+        .price {
+            font-size: 22px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .button {
+            display: inline-block;
+            background: #ff3b30;
+            color: white;
+            padding: 11px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .button:hover {
+            background: #d92d25;
+        }
+
+        .support {
+            display: block;
+            margin-top: 12px;
+            color: #25D366;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        footer {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        @media (max-width: 900px) {
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 15px 20px;
+            }
+
+            nav {
+                gap: 10px;
+            }
+
+            .shop-header h1 {
+                font-size: 32px;
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+                padding: 25px 15px 50px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">OTTPointStore</div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="cart.html">🛒 Cart</a>
+        </nav>
+    </header>
+
+    <section class="shop-header">
+        <p>OTTPOINTSTORE</p>
+        <h1>Shop</h1>
+    </section>
+
+    <section class="products">
+
+        <!-- Product 1 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="product-images/P001-hoichoi.jpeg" alt="Hoichoi On Your Number" style="width:100%; height:180px; object-fit:contain; border-radius:12px;">
+            </div>
+            <div class="rating">★★★★★</div>
+            <div class="views">👁️ <span class="view-count" data-base="120">120</span> people viewing</div>
+            <h2>Hoichoi On Your Number</h2>
+            <p class="description">
+                Ad-Free Streaming • Offline Viewing • 5 Device Access • Exclusive Content
+            </p>
+            <div class="price">₹89–₹199</div>
+            <a href="product.html" class="button">View Product</a>
+            <a href="https://wa.me/91XXXXXXXXXX" class="support">💬 Talk to Chat Support</a>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="product-images/P002-disney-hotstar.jpeg" alt="Disney+ Hotstar" style="width:100%; height:180px; object-fit:contain; border-radius:12px;">
+            </div>
+            <div class="rating">★★★★★</div>
+            <div class="views">👁️ <span class="view-count" data-base="98">98</span> people viewing</div>
+            <h2>Disney+ Hotstar</h2>
+            <p class="description">
+                Full HD • Super Plan • TV Supported • Replacement Support
+            </p>
+            <div class="price">₹69–₹149</div>
+            <a href="product.html?product=P002" class="button">View Product</a>
+            <a href="https://wa.me/91XXXXXXXXXX" class="support">💬 Talk to Chat Support</a>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="product-images/P003-netflix-prime-14days-combo.jpeg" alt="Netflix + Prime Private Profile 14 Days 4K Combo" style="width:100%; height:180px; object-fit:contain; border-radius:12px;">
+            </div>
+            <div class="rating">★★★★★</div>
+            <div class="views">👁️ <span class="view-count" data-base="156">156</span> people viewing</div>
+            <h2>Netflix + Prime Private Profile 14 Days 4K Combo</h2>
+            <p class="description">
+                Netflix + Prime Video • 4K UHD • 1 Device • 14 Days
+            </p>
+            <div class="price">₹129</div>
+            <a href="product.html?product=P003" class="button">View Product</a>
+            <a href="https://wa.me/91XXXXXXXXXX" class="support">💬 Talk to Chat Support</a>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="product-images/P004-netflix-prime-4k-combo.jpeg" alt="Netflix + Prime Subscription 4K Combo" style="width:100%; height:180px; object-fit:contain; border-radius:12px;">
+            </div>
+            <div class="rating">★★★★★</div>
+            <div class="views">👁️ <span class="view-count" data-base="143">143</span> people viewing</div>
+            <h2>Netflix + Prime Subscription 4K Combo</h2>
+            <p class="description">
+                Netflix 1 Screen + Prime Video 1 Screen • 4K UHD
+            </p>
+            <div class="price">₹169</div>
+            <a href="product.html?product=P004" class="button">View Product</a>
+            <a href="https://wa.me/91XXXXXXXXXX" class="support">💬 Talk to Chat Support</a>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="product-images/P005-netflix-private-profile-28days - .jpeg" alt="Netflix 1 Month – Private Profile With Pin 4K Plan" style="width:100%; height:180px; object-fit:contain; border-radius:12px;">
+            </div>
+
+            <div class="rating">★★★★★</div>
+            <div class="views">👁️ <span class="view-count" data-base="187">187</span> people viewing</div>
+
+            <h2>Netflix 1 Month – Private Profile With Pin 4K Plan</h2>
+
+            <p class="description">
+                Private Profile • PIN Protected • 28 Days • 4K UHD
+            </p>
+
+            <div class="price">₹169</div>
+
+            <a href="product.html?product=P005" class="button">View Product</a>
+            <a href="https://wa.me/91XXXXXXXXXX" class="support">💬 Talk to Chat Support</a>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="product-images/P006-netflix-premium.jpeg" alt="Netflix Premium" style="width:100%; height:180px; object-fit:contain; border-radius:12px;">
+            </div>
+            <div class="rating">★★★★★</div>
+            <div class="views">👁️ <span class="view-count" data-base="112">112</span> people viewing</div>
+            <h2>Netflix Premium</h2>
+            <p class="description">
+                Netflix Account • 4K UHD • TV • Android • Laptop • iPhone
+            </p>
+            <div class="price">₹129–₹1,249</div>
+            <a href="product.html?product=P006" class="button">View Product</a>
+            <a href="https://wa.me/91XXXXXXXXXX" class="support">💬 Talk to Chat Support</a>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="product-images/P007-netflix-private-profile-14days.jpeg" alt="Netflix Premium Private Profile 14 Days" style="width:100%; height:180px; object-fit:contain; border-radius:12px;">
+            </div>
+            <div class="rating">★★★★★</div>
+            <div class="views">👁️ <span class="view-count" data-base="134">134</span> people viewing</div>
+            <h2>Netflix Premium Private Profile 14 Days</h2>
+            <p class="description">
+                4K UHD • Private Profile • 14 Days • Replacement Support
+            </p>
+            <div class="price">₹99</div>
+            <a href="product.html?product=P007" class="button">View Product</a>
+            <a href="https://wa.me/91XXXXXXXXXX" class="support">💬 Talk to Chat Support</a>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="product-images/P008-prime-video-4device.jpeg" alt="Prime Video On Your Mail 4 Device" style="width:100%; height:180px; object-fit:contain; border-radius:12px;">
+            </div>
+            <div class="rating">★★★★★</div>
+            <div class="views">👁️ <span class="view-count" data-base="91">91</span> people viewing</div>
+            <h2>Prime Video On Your Mail 4 Device</h2>
+            <p class="description">
+                Prime Video Premium • 4K • 4 Devices • 1 or 6 Months
+            </p>
+            <div class="price">₹99–₹369</div>
+            <a href="product.html?product=P008" class="button">View Product</a>
+            <a href="https://wa.me/91XXXXXXXXXX" class="support">💬 Talk to Chat Support</a>
+        </div>
+
+        <!-- Product 9 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="product-images/P009-sony-liv.jpeg" alt="Sony LIV" style="width:100%; height:180px; object-fit:contain; border-radius:12px;">
+            </div>
+            <div class="rating">★★★★★</div>
+            <div class="views">👁️ <span class="view-count" data-base="76">76</span> people viewing</div>
+            <h2>Sony LIV</h2>
+            <p class="description">
+                Sony LIV Account • 4K • 5 Screens • TV • Laptop • Mobile • PC
+            </p>
+            <div class="price">₹99–₹449</div>
+            <a href="product.html?product=P009" class="button">View Product</a>
+            <a href="https://wa.me/91XXXXXXXXXX" class="support">💬 Talk to Chat Support</a>
+        </div>
+
+        <!-- Product 10 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="product-images/P010-spotify-premium-2month.jpeg" alt="Spotify Premium 2 Month On Mail" style="width:100%; height:180px; object-fit:contain; border-radius:12px;">
+            </div>
+            <div class="rating">★★★★★</div>
+            <div class="views">👁️ <span class="view-count" data-base="105">105</span> people viewing</div>
+            <h2>Spotify Premium 2 Month On Mail</h2>
+            <p class="description">
+                Ad-Free • Offline Listening • High Quality Audio • Unlimited Skips
+            </p>
+            <div class="price">₹109</div>
+            <a href="product.html?product=P010" class="button">View Product</a>
+            <a href="https://wa.me/91XXXXXXXXXX" class="support">💬 Talk to Chat Support</a>
+        </div>
+
+        <!-- Product 11 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="product-images/P011-youtube-premium.jpeg" alt="YouTube Premium" style="width:100%; height:180px; object-fit:contain; border-radius:12px;">
+            </div>
+            <div class="rating">★★★★★</div>
+            <div class="views">👁️ <span class="view-count" data-base="88">88</span> people viewing</div>
+            <h2>YouTube Premium</h2>
+            <p class="description">
+                4K • TV • Android • Laptop • iPhone • Customer Mail
+            </p>
+            <div class="price">₹79–₹189</div>
+            <a href="product.html?product=P011" class="button">View Product</a>
+            <a href="https://wa.me/91XXXXXXXXXX" class="support">💬 Talk to Chat Support</a>
+        </div>
+
+        <!-- Product 12 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="product-images/P012-zee5.jpeg" alt="Zee 5" style="width:100%; height:180px; object-fit:contain; border-radius:12px;">
+            </div>
+            <div class="rating">★★★★★</div>
+            <div class="views">👁️ <span class="view-count" data-base="67">67</span> people viewing</div>
+            <h2>Zee 5</h2>
+            <p class="description">
+                Full HD • TV Supported • 1 Year Plan • Replacement Support
+            </p>
+            <div class="price">₹399</div>
+            <a href="product.html?product=P012" class="button">View Product</a>
+            <a href="https://wa.me/91XXXXXXXXXX" class="support">💬 Talk to Chat Support</a>
+        </div>
+
+    </section>
+
+    <footer>
+        <p>© 2026 OTTPointStore. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const viewCounts = document.querySelectorAll(".view-count");
+
+        function updateViewCounts() {
+            viewCounts.forEach(function (item) {
+                const base = parseInt(item.getAttribute("data-base"));
+
+                const change = Math.floor(Math.random() * 21) - 10;
+
+                const newCount = Math.max(5, base + change);
+
+                item.textContent = newCount;
+            });
+        }
+
+        updateViewCounts();
+
+        setInterval(updateViewCounts, 45000);
+    </script>
+
+</body>
+</html>

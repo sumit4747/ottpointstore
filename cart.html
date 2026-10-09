@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cart - OTTPointStore</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            color: #222;
+        }
+
+        header {
+            background: #111;
+            color: white;
+            padding: 15px 35px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        nav {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #ff3b30;
+        }
+
+        .cart-header {
+            background: white;
+            text-align: center;
+            padding: 55px 20px 35px;
+        }
+
+        .cart-header p {
+            color: #ff3b30;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .cart-header h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .cart-section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 45px 25px 70px;
+        }
+
+        .cart-box {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 45px 20px;
+        }
+
+        .empty-cart-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .empty-cart h2 {
+            margin-bottom: 10px;
+        }
+
+        .empty-cart p {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #ff3b30;
+            color: white;
+            padding: 13px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .cart-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+.cart-buttons .button {
+    padding: 10px 12px;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+        .button:hover {
+            background: #d92d25;
+        }
+
+        .whatsapp-button {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            z-index: 2000;
+        }
+
+        .whatsapp-button a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #25D366;
+            color: white;
+            padding: 13px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        footer {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 15px 20px;
+            }
+
+            nav {
+                gap: 12px;
+            }
+
+            .cart-header h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+
+        <div class="logo">OTTPointStore</div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="#">My Account</a>
+            <a href="cart.html">🛒 Cart</a>
+        </nav>
+
+    </header>
+
+
+    <section class="cart-header">
+
+        <p>OTTPOINTSTORE</p>
+
+        <h1>Your Cart</h1>
+
+    </section>
+
+
+    <section class="cart-section">
+
+        <div class="cart-box">
+
+            <div id="cartContent">
+
+                <div class="empty-cart-icon">🛒</div>
+
+                <h2>Your cart is empty</h2>
+
+                <p>Add some products to your cart and they will appear here.</p>
+
+                <a href="shop.html" class="button">Continue Shopping</a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="whatsapp-button">
+        <a href="https://wa.me/91XXXXXXXXXX" target="_blank">
+            💬 WhatsApp
+        </a>
+    </div>
+
+
+    <footer>
+        <p>© 2026 OTTPointStore. All rights reserved.</p>
+    </footer>
+<script>
+
+function removeFromCart() {
+    localStorage.removeItem("cartProduct");
+    localStorage.removeItem("cartPrice");
+    window.location.reload();
+}
+const product = localStorage.getItem("cartProduct");
+const price = localStorage.getItem("cartPrice");
+
+if (product && price) {
+
+    document.getElementById("cartContent").innerHTML = `
+        <h2>${product}</h2>
+        <p>Price: ₹${price}</p>
+        <br>
+       <div class="cart-buttons">
+    <button class="button" onclick="removeFromCart()">Remove</button>
+    <a href="checkout.html" class="button">Checkout</a>
+    <a href="shop.html" class="button">Continue Shopping</a>
+</div>
+    `;
+
+}
+
+</script>
+</body>
+
+</html>

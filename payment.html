@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Payment - OTTPointStore</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            color: #222;
+        }
+
+        header {
+            background: #111;
+            color: white;
+            padding: 15px 35px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 700;
+        }
+
+        nav {
+            margin-left: auto;
+            display: flex;
+            gap: 22px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #ff3b30;
+        }
+
+        .payment-header {
+            background: white;
+            text-align: center;
+            padding: 55px 20px 35px;
+        }
+
+        .payment-header p {
+            color: #ff3b30;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .payment-header h1 {
+            font-size: 40px;
+        }
+
+        .payment-section {
+            max-width: 700px;
+            margin: auto;
+            padding: 45px 25px 70px;
+        }
+
+        .payment-box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .payment-box h2 {
+            margin-bottom: 20px;
+        }
+
+        .amount {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .payment-note {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #ff3b30;
+            color: white;
+            padding: 13px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background: #d92d25;
+        }
+
+        footer {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 15px 20px;
+            }
+
+            .payment-header h1 {
+                font-size: 32px;
+            }
+
+            .payment-box {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+
+        <div class="logo">OTTPointStore</div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="cart.html">🛒 Cart</a>
+        </nav>
+
+    </header>
+
+
+    <section class="payment-header">
+
+        <p>OTTPOINTSTORE</p>
+
+        <h1>Payment</h1>
+
+    </section>
+
+
+    <section class="payment-section">
+
+        <div class="payment-box">
+
+            <h2>Complete Your Payment</h2>
+
+            <div class="amount">
+                Total Amount: ₹<span id="paymentTotal">0</span>
+            </div>
+            <h2>UPI Payment</h2>
+
+<div class="payment-box">
+
+    <img src="./ottpointstore_upi_qr.jpeg" alt="OTTPointStore UPI QR Code" style="width:250px; height:250px; object-fit:contain;">
+
+    <p>
+        <strong>UPI ID:</strong><br>
+        paytm.s3ja29a@pty
+    </p>
+
+    <p>
+        Please pay exactly ₹<span id="upiAmount">0</span> using the QR code or UPI ID above.
+    </p>
+
+</div>
+
+            <p class="payment-note">
+                Please complete the payment using the payment method provided by OTTPointStore.
+                After payment, you will need to submit your payment details for verification.
+            </p>
+
+            <h2>Payment Details</h2>
+
+<form id="paymentForm">
+
+    <label for="utr">UTR / Transaction ID *</label>
+    <input
+        type="text"
+        id="utr"
+        placeholder="Enter your UTR / Transaction ID"
+        required
+    >
+
+    <br><br>
+<label for="screenshot">Payment Screenshot *</label>
+<input
+    type="file"
+    id="screenshot"
+    accept="image/*"
+    required
+>
+
+<br><br>
+<button type="submit" class="button">
+    Submit Payment for Verification
+</button>
+</form>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+        <p>© 2026 OTTPointStore. All rights reserved.</p>
+    </footer>
+<script>
+
+const paymentPrice = localStorage.getItem("cartPrice") || "0";
+
+document.getElementById("paymentTotal").textContent = paymentPrice;
+document.getElementById("upiAmount").textContent = paymentPrice;
+
+
+document.getElementById("paymentForm").addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    if (!this.checkValidity()) {
+        this.reportValidity();
+        return;
+    }
+
+
+    const customerName = localStorage.getItem("customerName") || "";
+    const whatsapp = localStorage.getItem("customerWhatsapp") || "";
+    const email = localStorage.getItem("customerEmail") || "";
+
+    const product = localStorage.getItem("cartProduct") || "";
+    const planDuration = localStorage.getItem("selectedMonth") || "";
+
+    const utr = document.getElementById("utr").value.trim();
+
+    const screenshotInput = document.getElementById("screenshot");
+
+    let screenshotData = "";
+
+    if (screenshotInput.files.length > 0) {
+
+        const file = screenshotInput.files[0];
+
+        screenshotData = await new Promise(function(resolve, reject) {
+
+            const reader = new FileReader();
+
+            reader.onload = function() {
+                resolve(reader.result);
+            };
+
+            reader.onerror = function() {
+                reject(reader.error);
+            };
+
+            reader.readAsDataURL(file);
+
+        });
+
+    }
+
+
+    const orderData = {
+
+        customerName: customerName,
+
+        whatsapp: whatsapp,
+
+        email: email,
+
+        product: product,
+
+        planDuration: planDuration,
+
+        amount: paymentPrice,
+
+        utr: utr,
+
+        screenshot: screenshotData,
+
+        notes: "Website Order"
+
+    };
+
+
+    try {
+
+        const response = await fetch("https://script.google.com/macros/s/AKfycbysH5Dtz8dbXanosOWatF-i6QZqeUsyNkz8-ZjJ2isqkQwhXpj41D5iqNP-e_y5BRKb/exec", {
+
+            method: "POST",
+
+            body: JSON.stringify(orderData)
+
+        });
+
+
+        const result = await response.json();
+
+
+        if (result.success) {
+
+            document.getElementById("paymentForm").innerHTML = `
+
+                <h2>Payment Submitted Successfully</h2>
+
+                <p>
+                    Your payment details have been submitted successfully.
+                </p>
+
+                <p>
+                    <strong>Order ID: ${result.orderId}</strong>
+                </p>
+
+                <p>
+                    <strong>Order Status: Pending Verification</strong>
+                </p>
+
+                <p>
+                    We will verify your payment and process your order shortly.
+                </p>
+
+            `;
+
+        } else {
+
+            alert("Error: " + (result.error || "Unknown error"));
+
+        }
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert("Something went wrong. Please try again.");
+
+    }
+
+});
+
+</script>
+</body>
+
+</html>

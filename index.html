@@ -3,14 +3,1505 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
+
+    <title>OTTPointStore - Premium Digital Products</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            color: #222;
+        }
+
+        header {
+            background: #111;
+            color: white;
+            padding: 15px 35px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .search-box {
+            display: flex;
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 11px 14px;
+            border: none;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .search-box button {
+            padding: 0 18px;
+            border: none;
+            background: #ff3b30;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            white-space: nowrap;
+        }
+
+        nav a:hover {
+            color: #ff3b30;
+        }
+
+        .categories {
+            background: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .categories h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        .category-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .category {
+            background: #f5f5f5;
+            padding: 14px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #111111, #292929);
+            color: white;
+            text-align: center;
+            padding: 90px 20px;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .hero-small,
+        .section-small {
+            color: #ff3b30;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .hero-text {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #dddddd;
+            max-width: 650px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-block;
+            background: #ff3b30;
+            color: white;
+            padding: 11px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background: #d92d25;
+        }
+
+        .secondary-button {
+            background: white;
+            color: #111;
+        }
+
+        .secondary-button:hover {
+            background: #eeeeee;
+            color: #111;
+        }
+
+        .section {
+            padding: 60px 25px;
+            max-width: 1250px;
+            margin: auto;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-heading h2 {
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        .section-heading p:last-child {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            transition: 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+        }
+
+        .product-image {
+            height: 250px;
+            background: #eee;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 230px;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+
+        .rating {
+            color: #f5a623;
+            font-size: 18px;
+            margin-bottom: 7px;
+        }
+
+        .views {
+            color: #777;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .product-card h3 {
+            font-size: 21px;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .product-description {
+            color: #666;
+            line-height: 1.5;
+            font-size: 14px;
+            min-height: 45px;
+        }
+
+        .price {
+            font-size: 22px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .support {
+            display: block;
+            margin-top: 12px;
+            color: #25D366;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .proof-section {
+    background: white;
+    padding: 45px 20px;
+    text-align: center;
+}
+
+.proof-section h2 {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.proof-section > p {
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.proof-slider {
+    max-width: 700px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.proof-slide {
+    display: none;
+}
+
+.proof-slide.active {
+    display: block;
+}
+
+.proof-slide img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+    background: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.10);
+}
+
+.proof-dots {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.proof-dot {
+    border: none;
+    background: transparent;
+    color: #bbb;
+    font-size: 16px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.proof-dot.active {
+    color: #111;
+}
+
+.proof-slider::-webkit-scrollbar {
+    height: 6px;
+}
+
+.proof-slider::-webkit-scrollbar-thumb {
+    background: #bbb;
+    border-radius: 10px;
+}
+
+@media (max-width: 600px) {
+
+    .proof-section {
+        padding: 35px 15px;
+    }
+
+    .proof-section h2 {
+        font-size: 25px;
+    }
+
+    .proof-slider {
+        gap: 10px;
+    }
+
+    .proof-slider img {
+        flex: 0 0 calc(50% - 5px);
+        width: calc(50% - 5px);
+        height: 180px;
+    }
+
+}
+
+        .about-section {
+            background: #f5f5f5;
+            padding: 65px 25px;
+        }
+
+        .about-box {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+            text-align: center;
+        }
+
+        .about-box h2 {
+            font-size: 32px;
+            margin-bottom: 18px;
+        }
+
+        .about-box p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .tools-section {
+            background: white;
+            padding: 65px 25px;
+        }
+
+        .tools-grid {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .tool-card {
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-align: center;
+            background: white;
+        }
+
+        .tool-icon {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .tool-card h3 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .tool-card p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .how-section {
+            background: #f5f5f5;
+            padding: 65px 25px;
+        }
+
+        .how-list {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .how-card {
+            background: white;
+            padding: 25px 18px;
+            text-align: center;
+            border-radius: 12px;
+            border: 1px solid #eee;
+        }
+
+        .how-number {
+            width: 45px;
+            height: 45px;
+            background: #111;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .how-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .how-card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .why-us {
+            background: white;
+            padding: 65px 25px;
+        }
+
+        .why-list {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .why-card {
+            text-align: center;
+            padding: 25px 18px;
+            border: 1px solid #eeeeee;
+            border-radius: 12px;
+            background: #ffffff;
+        }
+
+        .why-icon {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .why-card h3 {
+            font-size: 19px;
+            margin-bottom: 10px;
+        }
+
+        .why-card p {
+            color: #666;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        .faq-section {
+            background: #f5f5f5;
+            padding: 65px 25px;
+        }
+
+        .faq-list {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .faq {
+            background: white;
+            margin-bottom: 12px;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #eee;
+        }
+
+        .faq h3 {
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+
+        .faq p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .whatsapp-button {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            z-index: 2000;
+        }
+
+        .whatsapp-button a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #25D366;
+            color: white;
+            padding: 13px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .site-footer {
+            background: #111;
+            color: white;
+            padding: 55px 25px 20px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .footer-column h4 {
+            font-size: 17px;
+            margin-bottom: 18px;
+        }
+
+        .footer-column p {
+            color: #bbbbbb;
+            line-height: 1.6;
+            max-width: 320px;
+        }
+
+        .footer-column a {
+            display: block;
+            color: #bbbbbb;
+            text-decoration: none;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: #999;
+            font-size: 13px;
+        }
+
+        @media (max-width: 900px) {
+            header {
+                flex-wrap: wrap;
+            }
+
+            .search-box {
+                order: 3;
+                max-width: 100%;
+                flex-basis: 100%;
+            }
+
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .how-list,
+            .why-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 15px 18px;
+                gap: 15px;
+            }
+
+            nav {
+                gap: 10px;
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .hero {
+                padding: 65px 18px;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .hero-text {
+                font-size: 16px;
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .tools-grid,
+            .how-list,
+            .why-list,
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 45px 15px;
+            }
+
+            .section-heading h2 {
+                font-size: 28px;
+            }
+
+            .proof-slide img {
+                max-height: 500px;
+            }
+
+            .about-box {
+                padding: 25px 18px;
+            }
+
+            .whatsapp-button {
+                right: 15px;
+                bottom: 15px;
+            }
+        }
+    </style>
+    <style>
+.whatsapp-float {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 58px;
+    height: 58px;
+    background: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 28px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+    z-index: 9999;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.08);
+}
+</style>
+<style>
+.whatsapp-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    max-width: calc(100% - 40px);
+    background: white;
+    padding: 28px 24px;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+    z-index: 10000;
+    display: none;
+}
+
+.whatsapp-popup.show {
+    display: block;
+}
+
+.whatsapp-popup-close {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    border: none;
+    background: transparent;
+    font-size: 20px;
+    cursor: pointer;
+    color: #555;
+}
+
+.whatsapp-popup-icon {
+    width: 62px;
+    height: 62px;
+    margin: 0 auto 15px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.whatsapp-popup h3 {
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.whatsapp-popup p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 18px;
+}
+
+.whatsapp-popup-button {
+    display: inline-block;
+    background: #25D366;
+    color: white;
+    padding: 11px 18px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-weight: bold;
+}
+</style>
 </head>
 
 <body>
 
-    <h1>Welcome to My Website</h1>
+<header>
 
-    <p>Our website is coming soon.</p>
+    <div class="logo">OTTPointStore</div>
 
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search products...">
+        <button onclick="searchProducts()">🔍</button>
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="#">My Account</a>
+        <a href="cart.html">🛒 Cart</a>
+    </nav>
+
+</header>
+
+
+<!-- Categories -->
+
+<section class="categories">
+
+    <h2>Shop by Category</h2>
+
+    <div class="category-list">
+
+        <a href="shop.html" class="category">🎬 OTT Subscriptions</a>
+        <div class="category">🤖 AI Tools</div>
+        <div class="category">💻 Software</div>
+        <div class="category">🎓 Education</div>
+        <div class="category">🔥 Best Sellers</div>
+        <div class="category">⭐ New Arrivals</div>
+
+    </div>
+
+</section>
+
+
+<!-- Hero -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <p class="hero-small">WELCOME TO OTTPOINTSTORE</p>
+
+        <h1>Premium Digital Products<br>At Great Prices</h1>
+
+        <p class="hero-text">
+            Explore OTT subscriptions, AI tools, software and useful digital services.
+            Simple ordering and customer support.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="shop.html" class="button">
+                Shop Now
+            </a>
+
+            <a href="#products" class="button secondary-button">
+                Explore Products
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- 12 Products -->
+
+<section class="section" id="products">
+
+    <div class="section-heading">
+
+        <p class="section-small">EXPLORE OUR PRODUCTS</p>
+
+        <h2>Popular Products</h2>
+
+        <p>
+            Explore our available digital products and subscriptions.
+        </p>
+
+    </div>
+
+
+    <div class="products">
+
+
+        <!-- Product 1 -->
+
+        <div class="product-card">
+
+            <div class="product-image">
+                <img src="product-images/P001-hoichoi.jpeg"
+                     alt="Hoichoi On Your Number">
+            </div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="views">
+                👁️ <span class="view-count" data-base="120">120</span> people viewing
+            </div>
+
+            <h3>Hoichoi On Your Number</h3>
+
+            <p class="product-description">
+                Ad-Free Streaming • Offline Viewing • 5 Device Access
+            </p>
+
+            <div class="price">₹89–₹199</div>
+
+            <a href="product.html" class="button">
+                View Product
+            </a>
+
+            <a href="https://wa.me/919067028494"
+               target="_blank"
+               class="support">
+                💬 Talk to Chat Support
+            </a>
+
+        </div>
+
+
+        <!-- Product 2 -->
+
+        <div class="product-card">
+
+            <div class="product-image">
+                <img src="product-images/P002-disney-hotstar.jpeg"
+                     alt="Disney+ Hotstar">
+            </div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="views">
+                👁️ <span class="view-count" data-base="98">98</span> people viewing
+            </div>
+
+            <h3>Disney+ Hotstar</h3>
+
+            <p class="product-description">
+                Full HD • Super Plan • TV Supported • Replacement Support
+            </p>
+
+            <div class="price">₹69–₹149</div>
+
+            <a href="product.html?product=P002" class="button">
+                View Product
+            </a>
+
+            <a href="https://wa.me/919067028494"
+               target="_blank"
+               class="support">
+                💬 Talk to Chat Support
+            </a>
+
+        </div>
+
+
+        <!-- Product 3 -->
+
+        <div class="product-card">
+
+            <div class="product-image">
+                <img src="product-images/P003-netflix-prime-14days-combo.jpeg"
+                     alt="Netflix Prime Private Profile 14 Days">
+            </div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="views">
+                👁️ <span class="view-count" data-base="156">156</span> people viewing
+            </div>
+
+            <h3>Netflix + Prime Private Profile 14 Days 4K Combo</h3>
+
+            <p class="product-description">
+                Netflix + Prime Video • 4K UHD • 1 Device • 14 Days
+            </p>
+
+            <div class="price">₹129</div>
+
+            <a href="product.html?product=P003" class="button">
+                View Product
+            </a>
+
+            <a href="https://wa.me/919067028494"
+               target="_blank"
+               class="support">
+                💬 Talk to Chat Support
+            </a>
+
+        </div>
+
+
+        <!-- Product 4 -->
+
+        <div class="product-card">
+
+            <div class="product-image">
+                <img src="product-images/P004-netflix-prime-4k-combo.jpeg"
+                     alt="Netflix Prime Subscription 4K Combo">
+            </div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="views">
+                👁️ <span class="view-count" data-base="143">143</span> people viewing
+            </div>
+
+            <h3>Netflix + Prime Subscription 4K Combo</h3>
+
+            <p class="product-description">
+                Netflix 1 Screen + Prime Video 1 Screen • 4K UHD
+            </p>
+
+            <div class="price">₹169</div>
+
+            <a href="product.html?product=P004" class="button">
+                View Product
+            </a>
+
+            <a href="https://wa.me/919067028494"
+               target="_blank"
+               class="support">
+                💬 Talk to Chat Support
+            </a>
+            </div>
+            <div class="product-card">
+
+            <div class="product-image">
+                <img src="product-images/P005-netflix-private-profile-28days - .jpeg"
+                     alt="Netflix 1 Month Private Profile With Pin 4K Plan">
+            </div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="views">
+                👁️ <span class="view-count" data-base="187">187</span> people viewing
+            </div>
+
+            <h3>Netflix 1 Month – Private Profile With Pin 4K Plan</h3>
+
+            <p class="product-description">
+                Private Profile • PIN Protected • 28 Days • 4K UHD
+            </p>
+
+            <div class="price">₹169</div>
+
+            <a href="product.html?product=P005" class="button">
+                View Product
+            </a>
+
+            <a href="https://wa.me/919067028494"
+               target="_blank"
+               class="support">
+                💬 Talk to Chat Support
+            </a>
+
+        </div>
+
+
+        <div class="product-card">
+
+            <div class="product-image">
+                <img src="product-images/P006-netflix-premium.jpeg"
+                     alt="Netflix Premium">
+            </div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="views">
+                👁️ <span class="view-count" data-base="112">112</span> people viewing
+            </div>
+
+            <h3>Netflix Premium</h3>
+
+            <p class="product-description">
+                Netflix Account • 4K UHD • TV • Android • Laptop • iPhone
+            </p>
+
+            <div class="price">₹129–₹1,249</div>
+
+            <a href="product.html?product=P006" class="button">
+                View Product
+            </a>
+
+            <a href="https://wa.me/919067028494"
+               target="_blank"
+               class="support">
+                💬 Talk to Chat Support
+            </a>
+
+        </div>
+
+
+        <div class="product-card">
+
+            <div class="product-image">
+                <img src="product-images/P007-netflix-private-profile-14days.jpeg"
+                     alt="Netflix Premium Private Profile 14 Days">
+            </div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="views">
+                👁️ <span class="view-count" data-base="134">134</span> people viewing
+            </div>
+
+            <h3>Netflix Premium Private Profile 14 Days</h3>
+
+            <p class="product-description">
+                4K UHD • Private Profile • 14 Days • Replacement Support
+            </p>
+
+            <div class="price">₹99</div>
+
+            <a href="product.html?product=P007" class="button">
+                View Product
+            </a>
+
+            <a href="https://wa.me/919067028494"
+               target="_blank"
+               class="support">
+                💬 Talk to Chat Support
+            </a>
+
+        </div>
+
+
+        <div class="product-card">
+
+            <div class="product-image">
+                <img src="product-images/P008-prime-video-4device.jpeg"
+                     alt="Prime Video On Your Mail 4 Device">
+            </div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="views">
+                👁️ <span class="view-count" data-base="91">91</span> people viewing
+            </div>
+
+            <h3>Prime Video On Your Mail 4 Device</h3>
+
+            <p class="product-description">
+                Prime Video Premium • 4K • 4 Devices • 1 or 6 Months
+            </p>
+
+            <div class="price">₹99–₹369</div>
+
+            <a href="product.html?product=P008" class="button">
+                View Product
+            </a>
+
+            <a href="https://wa.me/919067028494"
+               target="_blank"
+               class="support">
+                💬 Talk to Chat Support
+            </a>
+
+        </div>
+
+
+        <div class="product-card">
+
+            <div class="product-image">
+                <img src="product-images/P009-sony-liv.jpeg"
+                     alt="Sony LIV">
+            </div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="views">
+                👁️ <span class="view-count" data-base="76">76</span> people viewing
+            </div>
+
+            <h3>Sony LIV</h3>
+
+            <p class="product-description">
+                Sony LIV Account • 4K • 5 Screens • TV • Laptop • Mobile • PC
+            </p>
+
+            <div class="price">₹99–₹449</div>
+
+            <a href="product.html?product=P009" class="button">
+                View Product
+            </a>
+
+            <a href="https://wa.me/919067028494"
+               target="_blank"
+               class="support">
+                💬 Talk to Chat Support
+            </a>
+
+        </div>
+
+
+        <div class="product-card">
+
+            <div class="product-image">
+                <img src="product-images/P010-spotify-premium-2month.jpeg"
+                     alt="Spotify Premium 2 Month On Mail">
+            </div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="views">
+                👁️ <span class="view-count" data-base="105">105</span> people viewing
+            </div>
+
+            <h3>Spotify Premium 2 Month On Mail</h3>
+
+            <p class="product-description">
+                Ad-Free • Offline Listening • High Quality Audio • Unlimited Skips
+            </p>
+
+            <div class="price">₹109</div>
+
+            <a href="product.html?product=P010" class="button">
+                View Product
+            </a>
+
+            <a href="https://wa.me/919067028494"
+               target="_blank"
+               class="support">
+                💬 Talk to Chat Support
+            </a>
+
+        </div>
+
+
+        <div class="product-card">
+
+            <div class="product-image">
+                <img src="product-images/P011-youtube-premium.jpeg"
+                     alt="YouTube Premium">
+            </div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="views">
+                👁️ <span class="view-count" data-base="88">88</span> people viewing
+            </div>
+
+            <h3>YouTube Premium</h3>
+
+            <p class="product-description">
+                4K • TV • Android • Laptop • iPhone • Customer Mail
+            </p>
+
+            <div class="price">₹79–₹189</div>
+
+            <a href="product.html?product=P011" class="button">
+                View Product
+            </a>
+
+            <a href="https://wa.me/919067028494"
+               target="_blank"
+               class="support">
+                💬 Talk to Chat Support
+            </a>
+
+        </div>
+
+
+        <div class="product-card">
+
+            <div class="product-image">
+                <img src="product-images/P012-zee5.jpeg"
+                     alt="Zee 5">
+            </div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="views">
+                👁️ <span class="view-count" data-base="67">67</span> people viewing
+            </div>
+
+            <h3>Zee 5</h3>
+
+            <p class="product-description">
+                Full HD • TV Supported • 1 Year Plan • Replacement Support
+            </p>
+
+            <div class="price">₹399</div>
+
+            <a href="product.html?product=P012" class="button">
+                View Product
+            </a>
+
+            <a href="https://wa.me/919067028494"
+               target="_blank"
+               class="support">
+                💬 Talk to Chat Support
+            </a>
+
+        </div>
+        </div>
+
+       <section class="proof-section">
+
+    <h2>Customer Proof</h2>
+
+    <p>Real customer feedback and order proof</p>
+
+    <div class="proof-slider">
+
+    <div class="proof-slide active">
+        <img src="Proof-images/proof1.jpeg" alt="Customer Proof 1">
+    </div>
+
+    <div class="proof-slide">
+        <img src="Proof-images/proof2.jpeg" alt="Customer Proof 2">
+    </div>
+
+    <div class="proof-slide">
+        <img src="Proof-images/proof3.jpeg" alt="Customer Proof 3">
+    </div>
+
+</div>
+
+<div class="proof-dots">
+
+    <button class="proof-dot active" onclick="showProof(0)">●</button>
+    <button class="proof-dot" onclick="showProof(1)">●</button>
+    <button class="proof-dot" onclick="showProof(2)">●</button>
+
+</div>
+
+</section>
+<script>
+let currentProof = 0;
+
+const proofSlides = document.querySelectorAll(".proof-slide");
+const proofDots = document.querySelectorAll(".proof-dot");
+const proofSlider = document.querySelector(".proof-slider");
+
+function showProof(index) {
+    currentProof = index;
+
+    proofSlides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+    });
+
+    proofDots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === index);
+    });
+}
+
+let startX = 0;
+
+proofSlider.addEventListener("touchstart", function(e) {
+    startX = e.touches[0].clientX;
+});
+
+proofSlider.addEventListener("touchend", function(e) {
+    const endX = e.changedTouches[0].clientX;
+    const difference = startX - endX;
+
+    if (Math.abs(difference) < 50) return;
+
+    if (difference > 0 && currentProof < proofSlides.length - 1) {
+        showProof(currentProof + 1);
+    }
+
+    if (difference < 0 && currentProof > 0) {
+        showProof(currentProof - 1);
+    }
+});
+
+showProof(0);
+</script>
+<section class="about-section">
+
+    <div class="about-box">
+
+        <h2>About OTTPointStore</h2>
+
+        <p>
+            Welcome to OTTPointStore — your simple destination for digital products
+            and services. Explore OTT subscriptions and other useful digital products
+            at affordable prices, with easy ordering and customer support.
+        </p>
+
+    </div>
+
+</section>
+<section class="how-section">
+
+    <h2>How to Order</h2>
+
+    <div class="how-box">
+
+        <div>
+            <span>1</span>
+            <h3>Choose Product</h3>
+            <p>Select the digital product you want.</p>
+        </div>
+
+        <div>
+            <span>2</span>
+            <h3>Place Order</h3>
+            <p>Enter your basic customer details.</p>
+        </div>
+
+        <div>
+            <span>3</span>
+            <h3>Make Payment</h3>
+            <p>Complete the payment using the available payment option.</p>
+        </div>
+
+        <div>
+            <span>4</span>
+            <h3>Get Your Order</h3>
+            <p>After payment verification, your order will be processed.</p>
+        </div>
+
+    </div>
+
+</section>
+<section class="contact-section">
+
+    <h2>Need Help?</h2>
+
+    <p>
+        Have a question about a product or your order?
+        Our support team is here to help.
+    </p>
+
+    <a href="https://wa.me/919067028494" class="button">
+        Chat on WhatsApp
+    </a>
+
+</section>
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+            <h3>OTTPointStore</h3>
+            <p>Digital products at simple and affordable prices.</p>
+        </div>
+
+        <div>
+            <h3>Quick Links</h3>
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="cart.html">Cart</a>
+        </div>
+
+        <div>
+            <h3>Support</h3>
+            <a href="https://wa.me/919067028494">WhatsApp Support</a>
+        </div>
+
+    </div>
+    <div class="footer-policies">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="refund.html">Refund Policy</a>
+    <a href="terms.html">Terms & Conditions</a>
+</div>
+
+    <div class="footer-bottom">
+        © 2026 OTTPointStore. All Rights Reserved.
+    </div>
+
+</footer>
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/919067028494"
+   class="whatsapp-float"
+   target="_blank"
+   aria-label="Chat on WhatsApp">
+    <span>
+    <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true">
+        <path fill="white" d="M19.11 17.21c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.13-.42-2.15-1.34-.79-.7-1.32-1.57-1.48-1.84-.15-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27s.98 2.63 1.11 2.81c.14.18 1.93 2.95 4.67 4.14.65.28 1.16.45 1.56.58.66.21 1.26.18 1.74.11.53-.08 1.6-.65 1.82-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32z"/>
+        <path fill="white" d="M16.02 3C8.83 3 3 8.83 3 16.02c0 2.3.6 4.46 1.65 6.34L3 29l6.84-1.61A12.94 12.94 0 0 0 16.02 29C23.2 29 29 23.18 29 16.02 29 8.83 23.2 3 16.02 3zm0 23.65c-2.04 0-4.04-.55-5.79-1.59l-.41-.24-4.06.96.98-3.95-.27-.41a10.88 10.88 0 1 1 9.55 5.23z"/>
+    </svg>
+</span>
+</a>
+<!-- WhatsApp Popup -->
+<div class="whatsapp-popup" id="whatsappPopup">
+
+    <button class="whatsapp-popup-close" onclick="closeWhatsAppPopup()">✕</button>
+
+    <div class="whatsapp-popup-icon">
+        <svg viewBox="0 0 32 32" width="38" height="38" aria-hidden="true">
+            <path fill="white" d="M19.11 17.21c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.13-.42-2.15-1.34-.79-.7-1.32-1.57-1.48-1.84-.15-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.18-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27s.98 2.63 1.11 2.81c.14.18 1.93 2.95 4.67 4.14.65.28 1.16.45 1.56.58.66.21 1.26.18 1.74.11.53-.08 1.6-.65 1.82-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32z"/>
+            <path fill="white" d="M16.02 3C8.83 3 3 8.83 3 16.02c0 2.3.6 4.46 1.65 6.34L3 29l6.84-1.61A12.94 12.94 0 0 0 16.02 29C23.2 29 29 23.18 29 16.02 29 8.83 23.2 3 16.02 3zm0 23.65c-2.04 0-4.04-.55-5.79-1.59l-.41-.24-4.06.96.98-3.95-.27-.41a10.88 10.88 0 1 1 9.55 5.23z"/>
+        </svg>
+    </div>
+
+    <h3>Need Help?</h3>
+
+    <p>Chat with us on WhatsApp for quick support.</p>
+
+    <a href="https://wa.me/919067028494"
+       target="_blank"
+       class="whatsapp-popup-button">
+        Chat on WhatsApp
+    </a>
+
+</div>
+<script>
+function closeWhatsAppPopup() {
+    document.getElementById("whatsappPopup").classList.remove("show");
+}
+
+window.addEventListener("load", function() {
+    document.getElementById("whatsappPopup").classList.add("show");
+});
+</script>
 </body>
 </html>

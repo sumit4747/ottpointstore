@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout - OTTPointStore</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            color: #222;
+        }
+
+        header {
+            background: #111;
+            color: white;
+            padding: 15px 35px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 700;
+        }
+
+        nav {
+            margin-left: auto;
+            display: flex;
+            gap: 22px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #ff3b30;
+        }
+
+        .checkout-header {
+            background: white;
+            text-align: center;
+            padding: 55px 20px 35px;
+        }
+
+        .checkout-header p {
+            color: #ff3b30;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .checkout-header h1 {
+            font-size: 40px;
+        }
+
+        .checkout-section {
+            max-width: 900px;
+            margin: auto;
+            padding: 45px 25px 70px;
+        }
+
+        .checkout-box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .checkout-box h2 {
+            margin-bottom: 20px;
+        }
+
+        .order-summary {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .order-summary p {
+            margin-bottom: 10px;
+        }
+
+        .total {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .button {
+            display: inline-block;
+            background: #ff3b30;
+            color: white;
+            padding: 13px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background: #d92d25;
+        }
+
+        footer {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 15px 20px;
+            }
+
+            .checkout-header h1 {
+                font-size: 32px;
+            }
+
+            .checkout-box {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+
+        <div class="logo">OTTPointStore</div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="cart.html">🛒 Cart</a>
+        </nav>
+
+    </header>
+
+
+    <section class="checkout-header">
+
+        <p>OTTPOINTSTORE</p>
+
+        <h1>Checkout</h1>
+
+    </section>
+
+
+    <section class="checkout-section">
+
+        <div class="checkout-box">
+
+            <h2>Order Summary</h2>
+
+            <div class="order-summary">
+
+                <p id="checkoutProduct">Product</p>
+
+                <p>Price: ₹<span id="checkoutPrice">0</span></p>
+
+                <p class="total">
+                    Total: ₹<span id="checkoutTotal">0</span>
+                </p>
+
+            </div>
+            <h2>Customer Details</h2>
+
+<form>
+
+    <label for="name">Full Name*</label>
+    <input type="text" id="name" placeholder="Enter your full name" required>
+
+    <br><br>
+
+    <label for="whatsapp">WhatsApp Number*</label>
+    <input type="tel" id="whatsapp" placeholder="Enter your WhatsApp number" required pattern="[0-9]{10}" maxlength="10">
+
+    <br><br>
+
+    <label for="email">Email Address*</label>
+    <input type="email" id="email" placeholder="Enter your email address" required>
+
+    <br><br>
+
+    <button type="submit" class="button">
+    Continue to Payment
+</button>
+
+</form>
+
+<br>
+            <a href="cart.html" class="button">Back to Cart</a>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+        <p>© 2026 OTTPointStore. All rights reserved.</p>
+    </footer>
+
+
+    <script>
+document.querySelector("form").addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    if (this.checkValidity()) {
+
+        const customerName = document.getElementById("name").value.trim();
+        const whatsapp = document.getElementById("whatsapp").value.trim();
+        const email = document.getElementById("email").value.trim();
+
+        localStorage.setItem("customerName", customerName);
+        localStorage.setItem("customerWhatsapp", whatsapp);
+        localStorage.setItem("customerEmail", email);
+
+        window.location.href = "payment.html";
+
+    } else {
+
+        this.reportValidity();
+
+    }
+
+});
+
+
+const product = localStorage.getItem("cartProduct");
+const price = localStorage.getItem("cartPrice");
+
+if (product && price) {
+
+    document.getElementById("checkoutProduct").textContent = product;
+    document.getElementById("checkoutPrice").textContent = price;
+    document.getElementById("checkoutTotal").textContent = price;
+
+}
+</script>
+
+</body>
+
+</html>
